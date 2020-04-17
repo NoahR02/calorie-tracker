@@ -62,14 +62,8 @@ app.use(signup);
 app.use(isLoggedIn);
 
 if(process.env.NODE_ENV === "production") {
-  app.get('/*', (req, res) => {
-    try {
-      res.sendFile(path.join(__dirname, 'build', 'index.html'));
-    } catch(e) {
-      console.error("React failed to init.");
-      process.exit(1);
-    }
-  
+    app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
   });
 }
 // Use Routes END
