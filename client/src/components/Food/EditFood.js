@@ -431,7 +431,7 @@ class EditFood extends React.Component {
           <div id="dietaryFiber" className="subCarb nutrient"> <div id="dietaryFiberName">Dietary Fiber</div> <div id="dietaryFiberAmount">{`${this.state.dietaryFiber[0].toFixed(2)} ${this.state.dietaryFiber[1]} `}  </div></div>
 
 
-          <div id="sugar" className="subCarb nutrient"> <div id="sugarName">Sugar</div>  <div id="sugarAmount">{`${this.state.sugar[0].toFixed(2)} ${this.state.{sugar[1]} `}</div></div>
+          <div id="sugar" className="subCarb nutrient"> <div id="sugarName">Sugar</div>  <div id="sugarAmount">{`${this.state.sugar[0].toFixed(2)} ${this.state.sugar[1]} `}</div></div>
           <hr className="subCarb" />
 
           <div id="protein" className="nutrient"> <div id="proteinName">Protein</div> <div id="proteinAmount"> {`${this.state.protein[0].toFixed(2)} ${this.state.protein[1]} `} </div></div>
