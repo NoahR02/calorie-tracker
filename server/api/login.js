@@ -23,7 +23,9 @@ router.route("/login")
   
   db.connect(async (err, client, release) => {
     if (err) {
-      return console.error("Error acquiring client", err.stack);
+      console.error("Error acquiring client", err.stack);
+      return res.status(422).json({ errors: ["Unknown error."] });
+
     }
     const {email, password} = req.body;
     const userInfo = await client.query("select * from \"user\" where email = $1;", [email]);

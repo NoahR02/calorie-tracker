@@ -64,7 +64,7 @@ class Food extends React.Component {
     // Food Item
     const HTMLFoodMapper = (food) => {
       return (
-        <div id={food.id} className={`centerMealItem ${food.mealType}`} >
+        <div key={food.id}  id={food.id} className={`centerMealItem ${food.mealType}`} >
           <span className="divider" > </span>
           <div className="mealItemName" onClick={() => this.editFood(`/food/editfood/${food.fdcId}/mealtype/${food.mealType}/date/${this.state.date}/calories/${food.calories}`)}> {food.foodName} </div>
           <div className="mealItemCalories" onClick={ () => this.editFood(`/food/editfood/${food.fdcId}/mealtype/${food.mealType}/date/${this.state.date}/calories/${food.calories}`)}  > <span className="calories"> {food.calories} </span> calories </div>
@@ -72,7 +72,7 @@ class Food extends React.Component {
             <span className="dropdown" onClick={(e) => this.triggerFoodMenu(e)}>{"\u22EE"}</span>
             <ul className="dropdownContent">
               <Link to={`/food/editfood/${food.fdcId}/mealtype/${food.mealType}/date/${this.state.date}/calories/${food.calories}`} className={"edit"}> Edit </Link>
-              <a className="delete" onClick={() => this.deleteFood(food.id)}> Delete </a>
+              <span className="delete" onClick={() => this.deleteFood(food.id)}> Delete </span>
             </ul>
           </div>
           <span className="divider"> </span>
@@ -178,7 +178,6 @@ class Food extends React.Component {
               <span>Calories Remaining</span>
               <span id="circle2">
               <CircularProgressbar
-                styles={{text: {fill: '#f88',fontSize: '0.9em' }}}
                 maxValue={this.state.calorieGoal} value={this.state.calorieGoal - this.state.caloriesConsumedValue}
                 text={`${this.state.calorieGoal - this.state.caloriesConsumedValue} cals`}
 

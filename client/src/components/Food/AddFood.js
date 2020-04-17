@@ -1,6 +1,7 @@
 import React from "react";
 import "../../static/styles/fooditem.css";
 import { CircularProgressbar } from 'react-circular-progressbar';
+import submitForm from "../../helpers/Form";
 
 let nutrientAmounts = {nutrientAmounts:[]};
 let calorieBasis = {calorieBasis:120};
@@ -97,10 +98,6 @@ class AddFood extends React.Component {
     calorieBasis = {calorieBasis:Math.round(calories)};
     servingSizeBasis = {servingSizeBasis:100};
 
-    Object.freeze(nutrientAmounts);
-    Object.freeze(calorieBasis);
-    Object.freeze(servingSizeBasis);
-    console.log(nutrientAmounts.nutrientAmounts[0]);
   }
 
   numberOfServingsOnChange = async (e) => {
@@ -162,7 +159,32 @@ class AddFood extends React.Component {
           <div id="actionBar">
             <a href={`/food/searchfood/mealtype/${this.props.match.params.mealType}/date/${this.props.match.params.date}`} id="goBack">Go Back</a>
 
-            <form method="POST" action={`/food/addfood/${this.props.match.params.fdcId}/mealtype/${this.props.match.params.mealType}/date/${this.props.match.params.date}`} id="addFood">
+            <form
+
+
+
+              onSubmit ={  async (e) => {
+                await submitForm(
+                  e,
+                  "POST",
+                  `/food/addfood/${this.props.match.params.fdcId}/mealtype/${this.props.match.params.mealType}/date/${this.props.match.params.date}`,
+                  { 'Content-Type': 'application/json' },
+                  true,
+                  "/food",
+                  this.props.history,
+                  {
+                numberOfServings: this.state.numberOfServings,
+                servingSize:this.state.servingSize,
+                calories:this.state.calories,
+                foodName : this.state.foodName
+                  },
+                  this.props.updateErrors,
+                  (res) => {
+                  }
+                )
+              }
+              }
+              id="addFood">
               <input hidden id="inputNumberOfServings" step="any" name="numberOfServings"  onChange={()=> {}} type="number" value={this.state.numberOfServings} />
               <input hidden id="inputServingSize" step="any" name="servingSize"  onChange={()=> {}} type="number" value={this.state.servingSize} />
               <input hidden id="inputCalories" step="any" name="calories"  onChange={()=> {}} type="number" value={this.state.calories} />

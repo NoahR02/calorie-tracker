@@ -44,7 +44,7 @@ class EditFood extends React.Component {
   updateFoodValues = async () => {
 
     await this.setState({
-      calories: Math.round(this.calorieBasis.calorieBasis * (this.state.servingSize / 100)) * this.state.numberOfServings
+      calories: Math.round( (this.calorieBasis.calorieBasis * (this.state.servingSize / 100) * this.state.numberOfServings) )
     });
 
     const formula = parseFloat((this.state.servingSize / 100) * this.state.numberOfServings).toFixed(2);
@@ -168,7 +168,7 @@ class EditFood extends React.Component {
         this.originalServingSizeSent = food[0].servingSize;
 
         await this.setState( {
-          calories: originalCalories,
+          calories: Math.round(originalCalories),
           servingSize: originalServingSize,
           numberOfServings: originalNumberOfServings
         });

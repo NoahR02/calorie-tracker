@@ -36,7 +36,7 @@ class Login extends React.Component {
 
           <div className="inputField">
             <label className="inputFieldLabel">Password</label>
-            <input required type="password" onChange={(e) => this.setState({password:e.target.value})} name="password" placeholder="Password" />
+            <input required type="password" onChange={(e) => this.setState({password:e.target.value})} name="password" placeholder="Password"  autoComplete="on" />
           </div>
           <Link to="/" id="forgotPassword">Forgot Password?</Link>
           <input type="submit" value="Login" className="loginSubmit" />

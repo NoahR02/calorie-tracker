@@ -9,7 +9,8 @@ const { check, validationResult } = require('express-validator');
 router.post("/food", (req, res) => {
   db.connect(async (err, client, release) => {
     if (err) {
-      return console.error("Error acquiring client", err.stack);
+      console.error("Error acquiring client", err.stack);
+      return res.json(400, {errors:["Failed to get your food."]});
     }
    
     try {
@@ -143,7 +144,7 @@ router.post("/food/fooditem/:fdcId/mealtype/:mealType/date/:date", async (req, r
 router.post("/food/addfood/:fdcId/mealtype/:mealType/date/:date", [
   check("foodName").isString(),
   check("calories").isInt(),
-  check("numberOfServings").isNumeric(),
+  check("numberOfServings").isFloat(),
   check("servingSize").isInt()
 ],(req, res) => { 
   
@@ -160,14 +161,15 @@ router.post("/food/addfood/:fdcId/mealtype/:mealType/date/:date", [
   try {
     db.connect(async (err, client, release) => {
       if (err) {
-        return console.error("Error acquiring client", err.stack);
+        console.error("Error acquiring client", err.stack);
+        return res.status(422).json({ errors: ["Failed to add your food."] });
       }
       const {fdcId, mealType, date} = req.params;
       const {foodName, calories, numberOfServings, servingSize} = req.body;
       const addFoodQuery = await client.query("insert into food (userId, foodName, calories, \"fdcId\", mealType, date, numberOfServings, servingSize) values ($1, $2, $3, $4, $5, to_date($6,'YYYYMMDD'), $7, $8 );",
       [req.User.userId, foodName, parseFloat(calories), fdcId, mealType, date, parseFloat(numberOfServings), parseFloat(servingSize)]);
       release();
-      return res.redirect("/food");
+      return res.status(422).json({ msg: ["Added your food."] });
     });
   } catch(e) {
       return res.status(422).json({ errors: ["Failed to add your food."] });
@@ -180,7 +182,8 @@ router.post("/food/editfood/:fdcId/mealtype/:mealType/date/:date/calories/:calor
   try {
     db.connect(async (err, client, release) => {
       if (err) {
-        return console.error("Error acquiring client", err.stack);
+       console.error("Error acquiring client", err.stack);
+        return res.status(422).json({ errors: ["Failed to get food info."] });
       }
       const {fdcId, mealType, date, calories} = req.params;
       const selectFoodQuery = await client.query("select * from food where userId = $1 and \"fdcId\" = $2 and mealType = $3 and date = to_date($4, 'YYYYMMDD') and calories = $5 limit 1;",
@@ -204,7 +207,7 @@ router.post("/food/editfood/:fdcId/mealtype/:mealType/date/:date/calories/:calor
 router.put("/food/editfood/:fdcId/mealtype/:mealType/date/:date", [
   check("foodName").isString(),
   check("calories").isInt(),
-  check("numberOfServings").isNumeric(),
+  check("numberOfServings").isFloat(),
   check("servingSize").isInt(),
   check("originalCalories").isInt(),
   check("originalNumberOfServings").isNumeric(),
@@ -223,7 +226,8 @@ router.put("/food/editfood/:fdcId/mealtype/:mealType/date/:date", [
   try {
     db.connect(async (err, client, release) => {
       if (err) {
-        return console.error("Error acquiring client", err.stack);
+        console.error("Error acquiring client", err.stack);
+        return res.status(422).json({ errors: ["Failed to update food info."] });
       }
       const {fdcId, mealType, date} = req.params;
       const {foodName, calories, numberOfServings, servingSize, originalCalories, originalNumberOfServings, originalServingSize} = req.body;
@@ -253,7 +257,8 @@ router.delete(("/food/deletefood/:fdcId/mealtype/:mealType/date/:date"), [check(
   try {
     db.connect(async (err, client, release) => {
       if (err) {
-        return console.error("Error acquiring client", err.stack);
+        console.error("Error acquiring client", err.stack);
+        return res.status(422).json({ errors: ["Failed to delete food item."] });
       }
 
 

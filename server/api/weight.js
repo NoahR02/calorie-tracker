@@ -8,7 +8,8 @@ router.route("/weight")
   
   db.connect(async (err, client, release) => {
     if (err) {
-      return console.error("Error acquiring client", err.stack);
+      console.error("Error acquiring client", err.stack);
+      return res.json(400, {errors:["Failed to find your weight."]})
     }
     try {
       const {rows} = await client.query("select weight from weight where weight.userId = $1 order by weight.date desc limit 1;", [req.User.userId]);
@@ -37,7 +38,8 @@ router.post("/weight/date/:date", [
 
   db.connect( async (err, client, release) => {
     if (err) {
-      return console.error("Error acquiring client", err.stack);
+      console.error("Error acquiring client", err.stack);
+      return res.json(400, {errors:["Failed to update your weight."]})
     }
 
     try {

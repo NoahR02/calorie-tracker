@@ -70,7 +70,7 @@ class Signup extends React.Component {
 
         <div className="inputField">
           <label className="inputFieldLabel">Password</label>
-          <input onChange={(e) => this.setState({password:e.target.value}) } required type="password" name="password" placeholder="Password" />
+          <input onChange={(e) => this.setState({password:e.target.value}) } required type="password" name="password" placeholder="Password" autoComplete="on" />
         </div>
 
         <div id="tap">Tap or Click To Choose</div>

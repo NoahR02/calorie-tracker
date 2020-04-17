@@ -204,7 +204,7 @@
 }
 
 
-.dropdownContent a {
+.dropdownContent a, .dropdownContent span {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -219,7 +219,7 @@
   display: block;
 }*/
 
-.dropdownContent a:hover {
+.dropdownContent a:hover, .dropdownContent span:hover {
   background: #f2f2f2;
 }
 

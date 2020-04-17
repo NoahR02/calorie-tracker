@@ -13,11 +13,11 @@ router.post("/signup",[
   check("password").isLength({min:6, max:50}).withMessage("Password must be a minium length of 6 chars and a max of 50 chars."),
   check("firstName").isString(),
   check("lastName").isString(),
-  check("genderSelected").matches("Male" || "Female"),
+  check("genderSelected").isString(),
   check("age").isInt().withMessage("Age must be an Integer"),
   check("weight").isNumeric().toFloat().withMessage("Weight must be a Number."),
   check("goalWeight").isNumeric().toFloat().withMessage("Goal Weight must be a Number."),
-  check("calorieGoal").isInt().toInt().withMessage("Calorie Goal must be a Integer"),
+  check("calorieGoal").isInt().withMessage("Calorie Goal must be a Integer"),
 ], (req, res) => {
 
   const errors = validationResult(req);
@@ -27,13 +27,15 @@ router.post("/signup",[
     for(let i = 0; i < errorArray.length; i++ ) {
       tmpArray.push(errorArray[i].msg);
     }
+    console.log(errors)
     return res.status(422).json({ errors: [...tmpArray] });
   }
 
   try {
   db.connect(async (err, client, release) => {
     if (err) {
-      return console.error("Error acquiring client", err.stack);
+      console.error("Error acquiring client", err.stack);
+      return res.status(422).json({ errors: ["Unexpected error occurred. Please try again."] });
     }
     let month = new Date().getMonth();
     let year = new Date().getFullYear();
@@ -64,7 +66,7 @@ router.post("/signup",[
       req.User.firstName = firstName;
       req.User.goalWeight = parseFloat(goalWeight);
       req.User.calorieGoal = parseFloat(calorieGoal);
-      return res.redirect("/food");
+      return res.json({msg: "Sign up completed."});
   });
 } catch(e) {
   console.error(e);

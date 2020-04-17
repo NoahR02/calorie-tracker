@@ -42,7 +42,6 @@ app.all("*", (req, res, next) => {
   
   if(  (path.includes("/api") || path.includes("/user") ) && path !== "/api/isLoggedIn" ) {
     if(isDefined) {
-      console.log("hello")
       return next();
     } else {
       return res.redirect(401, "/login");

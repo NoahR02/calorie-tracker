@@ -39,7 +39,7 @@ class Navbar extends React.Component {
         <div id="userDropdown">
           <img alt="" id="userDropdownButton" src={profile} onClick={() => this.setState({isProfileMenuOpen: !this.state.isProfileMenuOpen}) }   />
           <ul id="dropdownContent" style={showProfileMenuStyle}>
-            <Link to="/user/settings" >Settings</Link>
+            <Link to="/user/settings" onClick={() => this.setState({isMenuOpen:false})} >Settings</Link>
 
             <form onSubmit={ async (e) =>  {
               e.preventDefault();
@@ -73,7 +73,7 @@ class Navbar extends React.Component {
     const showMenuStyle = this.state.isMenuOpen ? {display:"flex"} : {display:"none"};
     return(
       <nav id="nav">
-        <h2 id="navHeading"><Link to="/" >Calorie Tracker</Link></h2>
+        <h2 id="navHeading"><Link to="/" onClick={() => this.setState({isMenuOpen:false})} >Calorie Tracker</Link></h2>
         <div id="navLinks">
           <Link to="/" className="navLink">Home</Link>
           <Link to="/food" className="navLink">Food</Link>

@@ -2,9 +2,6 @@ import React from "react";
 import "../../static/styles/notfound.css"
 
 class NotFound extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   async componentDidMount() {
     await this.props.isAuthenticated(); // For Navbar

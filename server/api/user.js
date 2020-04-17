@@ -7,7 +7,7 @@ router.post("/user/settings", (req, res) => {
   db.connect( async (err, client, release) => {
     
     try {
-      if (err) { return console.error("Error acquiring client", err.stack);}
+      if (err) { console.error("Error acquiring client", err.stack); return res.json(400, {errors:["Failed to get your settings."]}); }
       const dataRow = await client.query("select email, last_name from \"user\" where \"user\".userId = $1 limit 1;", [req.User.userId] );
       const email = dataRow.rows[0].email;
       const lastName = dataRow.rows[0].last_name;
@@ -15,7 +15,8 @@ router.post("/user/settings", (req, res) => {
       return res.json({lastName,email, firstName:req.User.firstName, calorieGoal:req.User.calorieGoal, weightGoal:req.User.goalWeight});
     }
     catch(e) {
-      return res.json(400, {errors:["Failed to get your settings."]})
+      console.log(e.message);
+      return res.json(400, {errors:["Failed to get your settings."]});
     }
 
   });
@@ -37,7 +38,7 @@ router.post("/user/settings/update", [
   
   db.connect( async (err, client, release) => {
     const {goalWeight, calorieGoal} = req.body;
-    if (err) { return console.error("Error acquiring client", err.stack);}
+    if (err) { console.error("Error acquiring client", err.stack);  return res.json(400, {errors:["Failed to update your settings."]});}
     try {
       await client.query("update \"user\" set goalWeight = $1, calorieGoal = $2 where userId = $3 ;", [parseFloat(goalWeight), parseFloat(calorieGoal), req.User.userId] );
       req.User.goalWeight = parseFloat(goalWeight);
@@ -45,7 +46,8 @@ router.post("/user/settings/update", [
       release();
       return res.json({msg: "Success"});
     } catch(e) {
-        return res.json(400, {errors:["Failed to update your settings."]})
+        console.error(e.message);
+        return res.json(400, {errors:["Failed to update your settings."]});
     }
 
   });
