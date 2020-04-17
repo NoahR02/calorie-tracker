@@ -1,0 +1,16 @@
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+.idea/
+
+# Client
+client/.gitignore
+client/README.md
+
+# Server
+server/.env
+server/node_modules
+server/build
+
