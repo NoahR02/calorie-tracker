@@ -135,9 +135,6 @@
       justify-content: center;
     }
     
-    
-    
-    
   }
   
   @media screen and (max-width: 768px) {
@@ -184,10 +181,7 @@
     }
     
     .caloriesReason .caloriesReasonHeading {
-      margin-top: 2em;
-      text-align: center;
-      margin-left: 0;
-      width: 50%;
+      width: 75%;
     }
     
   }
@@ -195,5 +189,9 @@
   @media screen and (max-width: 490px) {
     #indexContainerTwo #introCalories {
       font-size: 1.8em;
+    }
+    
+    .caloriesReason .caloriesReasonHeading {
+      width: 100%;
     }
   }
