@@ -56,7 +56,7 @@ class User extends React.Component {
           <input id="email" type="email" readOnly value={this.state.email} />
           <br />
           <label htmlFor="goalWeight">Goal Weight</label>
-          <input onChange={ (e) => this.setState({goalWeight: e.target.value}) } name="goalWeight" required step="0.5" min="90" max="700" id="goalWeight" type="number" placeholder={this.state.goalWeight} />
+          <input onChange={ (e) => this.setState({goalWeight: e.target.value}) } name="goalWeight" required step="0.1" min="90" max="700" id="goalWeight" type="number" placeholder={this.state.goalWeight} />
           <br />
           <label htmlFor="calorieGoal">Calorie Goal</label>
           <input onChange={ (e) => this.setState({calorieGoal: e.target.value}) } name="calorieGoal" required  step="50" min="1000" max="50000" id="calorieGoal" type="number" placeholder={this.state.calorieGoal} />

@@ -79,7 +79,7 @@ class Weight extends React.Component {
 
           <div id="newWeight">
             <label htmlFor="newWeightInput">Enter A New Weight</label>
-            <input id="newWeightInput" name="weight" onChange={(e) => this.setState({weight: e.target.value})} required type="number" step="0.5" min="90" max="700" placeholder={`${this.state.currentWeight - 5} lbs`} />
+            <input id="newWeightInput" name="weight" onChange={(e) => this.setState({weight: e.target.value})} required type="number" step="0.1" min="90" max="700" placeholder={`${this.state.currentWeight - 5} lbs`} />
           </div>
           <input type="submit" value="Add Weight" id="newWeightSubmit" />
         </form>

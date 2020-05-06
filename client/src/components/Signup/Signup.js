@@ -100,12 +100,12 @@ class Signup extends React.Component {
 
         <div className="inputField">
           <label className="inputFieldLabel">Weight (lbs)</label>
-          <input onChange={(e) => this.setState({weight: e.target.value}) } required type="number" step="0.5" min="90" max="700" name="weight" placeholder="Weight" />
+          <input onChange={(e) => this.setState({weight: e.target.value}) } required type="number" step="0.1" min="90" max="700" name="weight" placeholder="Weight" />
         </div>
 
         <div className="inputField">
           <label className="inputFieldLabel">Goal Weight (lbs)</label>
-          <input onChange={(e) => this.setState({goalWeight:e.target.value})} required type="number" step="0.5" min="90" max="700" name="goalWeight" placeholder="Goal Weight" />
+          <input onChange={(e) => this.setState({goalWeight:e.target.value})} required type="number" step="0.1" min="90" max="700" name="goalWeight" placeholder="Goal Weight" />
         </div>
 
         <div className="inputField">

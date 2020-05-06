@@ -61,6 +61,7 @@
   
   #indexContainerTwo {
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
@@ -75,13 +76,33 @@
     font-weight: 500;
   }
   
+  .caloriesReason {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 70vw;
+    padding: 5vh 5vw;
+  }
+  
   .caloriesReason .caloriesReasonHeading {
-    margin-bottom: 2.5em;
     font-size: 1.1em;
+    margin-left: auto;
+    text-align: center;
+    font-weight: bold;
+    width: 30%;
+  }
+  
+  .caloriesReasonHeading p {
+    margin-top: 10px;
+    font-weight: normal;
+    text-align: center;
+    line-height: 1.2em;
+    width: 100%;
   }
   
   
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1000px) {
     #indexContainerOne #indexIntro {
       margin: 0;
     }
@@ -89,12 +110,23 @@
     #indexContainerOne #indexIntroImage {display: none;}
   
     .caloriesReason {
+      margin-bottom: 10vh;
+    }
+    
+    .caloriesReason {
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      width:50%;
+      align-items: center;
+      padding: 0;
       margin-bottom: 10vh;
+    }
+    
+    .caloriesReason .caloriesReasonHeading {
+      margin-top: 2em;
+      text-align: center;
+      margin-left: 0;
+      width: 50%;
     }
   
     
@@ -145,13 +177,18 @@
     .caloriesReason {
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      width:100%;
+      align-items: center;
+      padding: 0;
       margin-bottom: 10vh;
     }
     
-    
+    .caloriesReason .caloriesReasonHeading {
+      margin-top: 2em;
+      text-align: center;
+      margin-left: 0;
+      width: 50%;
+    }
     
   }
   

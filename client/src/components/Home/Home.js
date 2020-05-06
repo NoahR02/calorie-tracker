@@ -1,7 +1,7 @@
 import React from "react";
 import "../../static/styles/index.css";
 import superwoman from "../../static/images/superwoman.svg";
-import dogwoman from "../../static/images/dogwoman.svg";
+import overeating from "../../static/images/overeating.svg";
 import man from "../../static/images/app.svg";
 import progress from "../../static/images/progress.svg";
 import {Link} from "react-router-dom";
@@ -48,18 +48,25 @@ class Home extends React.Component {
         <div id="indexContainerTwo">
           <h3 id="introCalories">Why track calories?</h3>
           <div className="caloriesReason">
-            <h4 className="caloriesReasonHeading">It's Easy To Track Calories <br /> Even I Can Do It!</h4>
-            <img alt="" className="caloriesReasonImage" src={dogwoman} width="200" height="200" />
+            <img alt="" className="caloriesReasonImage" src={overeating} width="200" height="200" />
+            <h4 className="caloriesReasonHeading">Prevent overeating: <br /> 
+              <p>By tracking your
+              calories you can prevent yourself from overeating and gaining weight.</p>
+            </h4>
           </div>
 
           <div className="caloriesReason">
-            <h4 className="caloriesReasonHeading">Tracking progress and making goals<br /> has never been easier!</h4>
             <img alt="" className="caloriesReasonImage" src={progress} width="200" height="200" />
+            <h4 className="caloriesReasonHeading">View details about your food: <br /> 
+              <p>Viewing a foods macronutrients will allow you to see what macronutrient it's rich in.</p>
+            </h4>
           </div>
 
           <div className="caloriesReason">
-            <h4 className="caloriesReasonHeading">Add, Edit, and Remove Food<br /> to Track Your Calories!</h4>
             <img alt="" className="caloriesReasonImage" src={man} width="200" height="200" />
+            <h4 className="caloriesReasonHeading">Being conscious: <br /> 
+              <p>Tracking calories can take a small amount of time which will allow you to think clearly if you actually want to eat this food and why.</p>
+            </h4>
           </div>
 
         </div>
