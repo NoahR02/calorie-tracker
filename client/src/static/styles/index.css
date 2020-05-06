@@ -61,7 +61,6 @@
   
   #indexContainerTwo {
     display: flex;
-    flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
@@ -76,33 +75,35 @@
     font-weight: 500;
   }
   
-  .caloriesReason {
+  .caloriesReasonImage {
+    width: 30vw;
+  }
+  
+  .caloriesReason .reasonContainer {
     display: flex;
+    flex-direction: column;
+    width: 30vw;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
-    width: 70vw;
-    padding: 5vh 5vw;
+    text-align: center;
+  }
+  
+  .reasonContainer p {
+    width: 70%;
+    font-size: 1.2em;
   }
   
   .caloriesReason .caloriesReasonHeading {
-    font-size: 1.1em;
-    margin-left: auto;
+    margin: 1.2em 0;
+    
+    width: 30vw;
+    font-size: 1.3em;
     text-align: center;
-    font-weight: bold;
-    width: 30%;
-  }
-  
-  .caloriesReasonHeading p {
-    margin-top: 10px;
-    font-weight: normal;
-    text-align: center;
-    line-height: 1.2em;
-    width: 100%;
+    font-weight: 600;
   }
   
   
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1300px) {
     #indexContainerOne #indexIntro {
       margin: 0;
     }
@@ -110,23 +111,12 @@
     #indexContainerOne #indexIntroImage {display: none;}
   
     .caloriesReason {
-      margin-bottom: 10vh;
-    }
-    
-    .caloriesReason {
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      padding: 0;
+      justify-content: center;
+      width:50%;
       margin-bottom: 10vh;
-    }
-    
-    .caloriesReason .caloriesReasonHeading {
-      margin-top: 2em;
-      text-align: center;
-      margin-left: 0;
-      width: 50%;
     }
   
     
@@ -134,6 +124,9 @@
       display: flex;
       justify-content: center;
     }
+    
+    
+    
     
   }
   
@@ -174,24 +167,36 @@
     .caloriesReason {
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      padding: 0;
+      justify-content: center;
+      width:100%;
       margin-bottom: 10vh;
     }
     
-    .caloriesReason .caloriesReasonHeading {
-      width: 75%;
+    .caloriesReason .reasonContainer {
+      width: 70vw;
     }
+    
+    .caloriesReason .caloriesReasonHeading {
+      margin: 1.2em 0;
+      
+      width: 50vw;
+    }
+    
+    .reasonContainer p {
+      width: 100%;
+      font-size: 1.2em;
+    }
+    
+    .caloriesReasonImage {
+      width: 60vw;
+    }
+    
     
   }
   
   @media screen and (max-width: 490px) {
     #indexContainerTwo #introCalories {
       font-size: 1.8em;
-    }
-    
-    .caloriesReason .caloriesReasonHeading {
-      width: 100%;
     }
   }

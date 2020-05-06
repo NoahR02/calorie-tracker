@@ -49,24 +49,28 @@ class Home extends React.Component {
           <h3 id="introCalories">Why track calories?</h3>
           <div className="caloriesReason">
             <img alt="" className="caloriesReasonImage" src={overeating} width="200" height="200" />
-            <h4 className="caloriesReasonHeading">Prevent overeating: <br /> 
+            <div className="reasonContainer">
+              <h4 className="caloriesReasonHeading">Prevent overeating:</h4>
               <p>By tracking your
-              calories you can prevent yourself from overeating and gaining weight.</p>
-            </h4>
+                calories you can prevent yourself from overeating and gaining weight.</p>
+            </div>
           </div>
 
           <div className="caloriesReason">
             <img alt="" className="caloriesReasonImage" src={progress} width="200" height="200" />
-            <h4 className="caloriesReasonHeading">View details about your food: <br /> 
+            <div className="reasonContainer">
+              <h4 className="caloriesReasonHeading">View details about your food:</h4>
               <p>Viewing a foods macronutrients will allow you to see what macronutrient it's rich in.</p>
-            </h4>
+            </div>
+            
           </div>
 
           <div className="caloriesReason">
             <img alt="" className="caloriesReasonImage" src={man} width="200" height="200" />
-            <h4 className="caloriesReasonHeading">Being conscious: <br /> 
+            <div className="reasonContainer">
+              <h4 className="caloriesReasonHeading">Being conscious: </h4>
               <p>Tracking calories can take a small amount of time which will allow you to think clearly if you actually want to eat this food and why.</p>
-            </h4>
+            </div>
           </div>
 
         </div>
