@@ -16,6 +16,9 @@ class User extends React.Component {
   async componentDidMount() {
     const res = await fetch("/user/settings", { method: "POST" });
     const settings = await res.json();
+
+    // Get users settings page data.
+
     this.setState({
       firstName: settings.firstName,
       lastName: settings.lastName,

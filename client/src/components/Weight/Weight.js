@@ -24,6 +24,7 @@ class Weight extends React.Component {
     const res = await fetch("/weight", { method: "POST" });
     const weight = await res.json();
     const gender = weight.gender === "Male" ? true : false;
+    // Get users weight data and update the state.
     this.setState({
       currentWeight: weight.currentWeight,
       weight: weight.currentWeight,
@@ -34,7 +35,7 @@ class Weight extends React.Component {
   }
 
   /*
-  @name isMale,
+  @name isMaleFunc,
   @type Function : HTML || JSX,
   @description : Returns gender image based on profile data.
   */

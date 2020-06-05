@@ -1,11 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-/**
- * @var isAuthenticated,
- * @type Function: Returns Boolean
- */
-
 class PrivateRoute extends React.Component {
   constructor(props) {
     super(props);
@@ -17,13 +12,21 @@ class PrivateRoute extends React.Component {
   }
 
   async componentDidMount() {
+   /**
+   * @var isAuthenticated,
+   * @type Function: Returns Boolean
+   */
     const authResult = await this.props.isAuthenticated();
     if(authResult) await this.setState({isAuth:true});
     if(!authResult) await this.setState({isAuth:false});
     await this.setState({loading:false});
   }
 
-
+  /*
+  @name RedirectOptions,
+  @type Function : HTML || JSX,
+  @description : Depending on the data redirect to the appropriate location.
+  */
   RedirectOptions = () => {
     const {path, Component, updateErrors} = this.props;
     const {isAuth, loading} = this.state;

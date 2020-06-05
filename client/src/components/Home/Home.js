@@ -20,6 +20,13 @@ class Home extends React.Component {
     if(!authResult) await this.setState({isAuth: false});
   }
 
+
+   /*
+  @name isLoggedIn,
+  @type Function : HTML || JSX,
+  @description : Show sign up links if the user is not authenticated otherwise do not display sign up info.
+  */
+
   isLoggedIn = () => {
     if (!this.state.isAuth) {
       return (

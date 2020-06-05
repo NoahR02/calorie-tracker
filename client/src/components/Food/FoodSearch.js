@@ -24,7 +24,10 @@ class FoodSearch extends React.Component {
       this.state.foods.map((food, index) => {
         return (
           <div key={index} className="food">
-            <Link key={index * 50 * parseInt(food.fdcId)} className={`${food.fdcId.toString()} foodItem`} to={`/food/fooditem/${food.fdcId.toString()}/mealtype/${this.state.mealType}/date/${this.state.date}`}>{food.description}</Link>
+            <Link key={index * 50 * parseInt(food.fdcId)} className={`${food.fdcId.toString()} foodItem`} 
+              to={`/food/fooditem/${food.fdcId.toString()}/mealtype/${this.state.mealType}/date/${this.state.date}`}>
+              {food.description}
+            </Link>
           </div>
         )
       })

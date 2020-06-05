@@ -20,8 +20,19 @@ class Signup extends React.Component {
       calorieGoal: 1900
     };
   }
+  /* 
+    @name maleSelected,
+    @type Function : Void,
+    @description : Set the gender to male.
+  */
+  maleSelected = () => this.setState({ genderSelected: "Male" });
 
-  setIsMaleSelected = () => this.setState({ genderSelected: this.state.genderSelected === "Male" ? "Female" : "Male" });
+   /* 
+    @name femaleSelected,
+    @type Function : Void,
+    @description : Set the gender to female.
+  */
+  femaleSelected = () => this.setState({ genderSelected: "Female"});
 
   render() {
     const maleSelected = this.state.genderSelected === "Male" ? { background: "#b9f2ff", padding: "15px" } : { background: "white", padding: "0px" };
@@ -77,7 +88,7 @@ class Signup extends React.Component {
 
         <div id="inputFieldSpecial">
           <div className="flex-inner-wrapper">
-            <div id="maleCheck" style={maleSelected} onClick={() => this.setIsMaleSelected()}>
+            <div id="maleCheck" style={maleSelected} onClick={() => this.maleSelected()}>
               <span id="maleLabel">Male</span>
               <input type="radio" name="gender" id="male" />
               <img alt="" src={male} width="100" id="maleImage" />
@@ -85,7 +96,7 @@ class Signup extends React.Component {
             <div id="genderMiddle">
               <div id="or">or</div>
             </div>
-            <div id="femaleCheck" style={femaleSelected} onClick={() => this.setIsMaleSelected()}>
+            <div id="femaleCheck" style={femaleSelected} onClick={() => this.femaleSelected()}>
               <span id="femaleLabel">Female</span>
               <input type="radio" name="gender" id="female" />
               <img alt="" src={female} width="80" id="femaleImage" />

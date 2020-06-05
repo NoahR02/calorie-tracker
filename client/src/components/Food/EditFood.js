@@ -40,7 +40,12 @@ class EditFood extends React.Component {
     await this.getFood(); // Get food info for a basis.
     await this.getFoodToEdit(); // Get their food data and update it to reflect their food.
   }
-
+ 
+  /*
+  @name updateFoodValues,
+  @type Function : Void,
+  @description : Update the food values depending on new servingSize or numberOfServing data.
+  */
   updateFoodValues = async () => {
 
     await this.setState({

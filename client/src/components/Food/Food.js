@@ -20,10 +20,16 @@ class Food extends React.Component {
   }
 
   async componentDidMount() {
+    // Date needs to be set so you can get accurate food data.
     await this.setState({date: setTodaysDate()});
     await this.getFood();
   }
-
+ 
+  /*
+  @name getFood,
+  @type Function : Void
+  @description : Send todays date and retrieve food for the user.
+  */
   getFood = async () => {
     await submitForm(
       undefined,
@@ -48,17 +54,31 @@ class Food extends React.Component {
     )
   };
 
-
+ /*
+  @name nextDateOnClick,
+  @type Function : Void,
+  @description : Update the date to the next day and get new food data to reflect that.
+  */
   nextDateOnClick = async () => {
     await this.setState({date: nextDate(this.state.date)});
     await this.getFood();
   }
 
+  /*
+  @name previousDateOnClick,
+  @type Function : Void,
+  @description : Update the date to the previous day and get new food data to reflect that.
+  */
   previousDateOnClick = async () => {
     await this.setState({date: previousDate(this.state.date)});
     await this.getFood();
   }
 
+   /*
+  @name createFood,
+  @type Function : HTML || JSX,
+  @description : Creates the food html based on state data and mealtype.
+  */
   createFood = (mealType) => {
     
     // Food Item
@@ -90,9 +110,18 @@ class Food extends React.Component {
     }
     
 };
-
+  /*
+  @name editFood,
+  @type Function : Void,
+  @description : Send the user to the edit page to edit their food item.
+  */
   editFood = (url) => this.props.history.push(url);
 
+  /*
+  @name deleteFood,
+  @type Function : Void,
+  @description : Delete a food item that the user wants to delete.
+  */
   deleteFood = async (id) => {
     let tempFood = this.state.food.find( (val) => val.id === id);
     const {fdcId, calories, mealType} = tempFood;
@@ -116,6 +145,12 @@ class Food extends React.Component {
 
     )
   };
+
+  /*
+  @name triggerFoodMenu,
+  @type Function : Void,
+  @description : Toggle the food menu.
+  */
 
   triggerFoodMenu = (e) => {
     if(e.target.nextElementSibling.classList.contains("foodMenuOpen")) {

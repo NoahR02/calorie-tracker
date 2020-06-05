@@ -38,7 +38,12 @@ class AddFood extends React.Component {
   async componentDidMount() {
     await this.getFood();
   }
-
+ 
+  /*
+    @name getFood,
+    @type Function : Void,
+    @description : Get food info from FoodCentral API.
+ */
   getFood = async () => {
     const res = await fetch(`/food/fooditem/${this.props.match.params.fdcId}/mealtype/${this.props.match.params.mealType}/date/${this.props.match.params.date}`, {
       method:"POST",
@@ -100,6 +105,11 @@ class AddFood extends React.Component {
 
   }
 
+ /*
+    @name numberOfServingsOnChange,
+    @type Function : Void,
+    @description : Update number of servings state and update state that should be effected by this update.
+ */
   numberOfServingsOnChange = async (e) => {
     let calories = Math.round((calorieBasis.calorieBasis * this.state.servingSize / servingSizeBasis.servingSizeBasis) * parseFloat(e.target.value));
 
@@ -125,6 +135,11 @@ class AddFood extends React.Component {
     });
   }
 
+  /*
+     @name servingSizeAmountOnChange,
+     @type Function : Void,
+     @description : Update serving size amount state and update state that should be effected by this update.
+  */
   servingSizeAmountOnChange = async (e) => {
     const servingSize = parseInt(e.target.value);
     await this.setState({
